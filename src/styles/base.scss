@@ -1,0 +1,14 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+// 撑满高度
+html,
+body,
+#app,
+.common-layout,
+.el-container,
+.el-menu {
+	height: 100%;
+}
