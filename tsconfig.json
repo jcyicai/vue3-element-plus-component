@@ -21,6 +21,7 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
+    /* 解决vite config 设置 @ 后，文件内引入 '@/' 提示报错问题  START */
     "baseUrl": "./",
     "paths": {
       "@": [
@@ -30,6 +31,7 @@
         "src/*"
       ]
     }
+    /* END */
   },
   "include": [
     "src/**/*.ts",
