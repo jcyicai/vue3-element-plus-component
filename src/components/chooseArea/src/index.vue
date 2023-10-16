@@ -50,6 +50,7 @@ watch(
 	() => province.value,
 	(val) => {
 		if (val) {
+			// ts 中 ! 非空断言  排除变量中的 null 或 undefined
 			const cities = allAreaData.value.find((item) => item.code === province.value)!.children!
 			cityData.value = cities
 		}

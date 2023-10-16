@@ -2,11 +2,11 @@
 	<div class="common-layout">
 		<el-container>
 			<el-aside width="auto">
-				<nav-side :collapse="isCollapse" />
+				<NavSide :collapse="isCollapse" />
 			</el-aside>
 			<el-container>
 				<el-header>
-					<nav-header v-model:collapse="isCollapse" />
+					<NavHeader v-model:collapse="isCollapse" />
 				</el-header>
 				<el-main>
 					<router-view></router-view>
@@ -18,8 +18,8 @@
 
 <script lang="ts" setup>
 import { ref } from 'vue'
-import NavSide from './navSide/index.vue'
-import NavHeader from './navHeader/index.vue'
+import NavSide from './NavSide/index.vue'
+import NavHeader from './NavHeader/index.vue'
 
 let isCollapse = ref(false)
 </script>

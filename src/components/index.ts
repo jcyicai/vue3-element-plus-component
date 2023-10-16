@@ -1,6 +1,6 @@
 import { App } from 'vue'
-import ChooseArea from './chooseArea'
-import ChooseIcon from './chooseIcon'
+import ChooseArea from './ChooseArea'
+import ChooseIcon from './ChooseIcon'
 
 const components = [ChooseArea, ChooseIcon]
 

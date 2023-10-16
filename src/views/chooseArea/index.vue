@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<choose-area @change="handleAreaChange"></choose-area>
+		<ChooseArea @change="handleAreaChange"></ChooseArea>
 	</div>
 </template>
 
