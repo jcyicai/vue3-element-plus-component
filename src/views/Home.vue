@@ -1,6 +1,13 @@
 <template>
 	<div>
-		<router-link to="/chooseIcon">chooseIcon</router-link>
+		<ul>
+			<li>
+				<router-link to="/chooseIcon">chooseIcon</router-link>
+			</li>
+			<li>
+				<router-link to="/chooseArea">chooseArea</router-link>
+			</li>
+		</ul>
 	</div>
 </template>
 

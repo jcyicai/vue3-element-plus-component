@@ -16,15 +16,15 @@
 import { ref, watch } from 'vue'
 import allAreas from '../lib/pca-code.json'
 
-// 省市区接口
+// 省市区 接口
 export interface AreaItem {
 	name: string
 	code: string
 	children?: AreaItem[]
 }
 
-// 派发父组件省市区接口
-export interface Data {
+// 派发父组件省市区 接口
+export interface AreaItemData {
 	name: string
 	code: string
 }
@@ -75,15 +75,15 @@ watch(
 	() => area.value,
 	(val) => {
 		if (val) {
-			let provinceItem: Data = {
+			let provinceItem: AreaItemData = {
 				name: province.value && allAreaData.value.find((item) => item.code === province.value)!.name,
 				code: province.value,
 			}
-			let cityItem: Data = {
+			let cityItem: AreaItemData = {
 				name: city.value && cityData.value.find((item) => item.code === city.value)!.name,
 				code: city.value,
 			}
-			let areaItem: Data = {
+			let areaItem: AreaItemData = {
 				name: val && areaData.value.find((item) => item.code === val)!.name,
 				code: val,
 			}
@@ -91,7 +91,7 @@ watch(
 			eimits('change', {
 				province: provinceItem,
 				city: cityItem,
-				ared: areaItem,
+				area: areaItem,
 			})
 		}
 	}
