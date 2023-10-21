@@ -12,6 +12,10 @@
 			<el-icon><Menu /></el-icon>
 			<span>趋势标记</span>
 		</el-menu-item>
+		<el-menu-item index="4">
+			<el-icon><Menu /></el-icon>
+			<span>消息通知</span>
+		</el-menu-item>
 	</el-menu>
 </template>
 

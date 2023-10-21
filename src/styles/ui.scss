@@ -5,3 +5,17 @@
         overflow-y: auto;
     }
 }
+
+// 消息通知 el-tab 样式调整
+.notice-list-tabs-item {
+    .el-tabs__header {
+        margin: 0 0 10px;
+    }
+    .el-tabs__nav {
+        width: 100%;
+        .el-tabs__item {
+            flex: 1;
+            text-align: center;
+        }
+    }
+}
