@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<div class="item">
-			<CuiNotification :value="50">
+			<JcNotification :value="50">
 				<template #default
 					><NoticeList
 						:list="list"
@@ -10,7 +10,7 @@
 						@actionClick="handleActionClick"
 					></NoticeList
 				></template>
-			</CuiNotification>
+			</JcNotification>
 		</div>
 		<!-- <div class="item">
 			<CuiNotification :value="50" :max="30"></CuiNotification>

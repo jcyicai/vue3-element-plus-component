@@ -1,33 +1,74 @@
 <template>
-	<el-menu :collapse="collapse" default-active="1" class="el-menu-vertical-box">
-		<el-menu-item index="1">
-			<el-icon><Menu /></el-icon>
-			<span>首页</span>
-		</el-menu-item>
-		<el-menu-item index="2">
-			<el-icon><Menu /></el-icon>
-			<span>图标选择器</span>
-		</el-menu-item>
-		<el-menu-item index="3">
-			<el-icon><Menu /></el-icon>
-			<span>趋势标记</span>
-		</el-menu-item>
-		<el-menu-item index="4">
-			<el-icon><Menu /></el-icon>
-			<span>消息通知</span>
-		</el-menu-item>
-	</el-menu>
+	<JcMenu :collapse="collapse" :data="data" router :default-active="$route.path"></JcMenu>
 </template>
 
 <script lang="ts" setup>
 const props = defineProps<{
 	collapse: boolean
 }>()
+
+const data = [
+	{
+		icon: 'HomeFilled',
+		name: '首页',
+		index: '/',
+	},
+	{
+		icon: 'Check',
+		name: '图标选择器',
+		index: '/chooseIcon',
+	},
+	{
+		icon: 'Location',
+		name: '省市区选择',
+		index: '/chooseArea',
+	},
+	{
+		icon: 'Sort',
+		name: '趋势标记',
+		index: '/trend',
+	},
+	/* {
+		icon: 'Timer',
+		name: '时间选择',
+		index: '/chooseTime',
+	}, */
+	{
+		icon: 'Bell',
+		name: '消息通知',
+		index: '/notification',
+	},
+	/* {
+		icon: 'TurnOff',
+		name: '城市选择',
+		index: '/chooseCity',
+	},
+	{
+		icon: 'DArrowRight',
+		name: '进度条',
+		index: '/progress',
+	},
+	{
+		icon: 'ScaleToOriginal',
+		name: '日历',
+		index: '/calendar',
+	},
+	{
+		icon: 'Tickets',
+		name: '表单',
+		index: '/form',
+	},
+	{
+		icon: 'Grid',
+		name: '表格',
+		index: '/table',
+	}, */
+	{
+		icon: 'Menu',
+		name: '导航菜单',
+		index: '/menu',
+	},
+]
 </script>
 
-<style lang="scss" scoped>
-// 通过设置 el-aside width="auto" 可自动改变左侧菜单宽度
-.el-menu-vertical-box:not(.el-menu--collapse) {
-	width: 200px;
-}
-</style>
+<style lang="scss" scoped></style>
