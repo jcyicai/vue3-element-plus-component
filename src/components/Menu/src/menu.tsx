@@ -1,5 +1,4 @@
-import { defineComponent, PropType, useAttrs } from 'vue'
-import { MenuItem } from './types'
+import { defineComponent, type PropType, useAttrs } from 'vue'
 import * as EleIcons from '@element-plus/icons-vue'
 
 export default defineComponent({
