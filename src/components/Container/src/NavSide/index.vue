@@ -28,27 +28,27 @@ const data = [
 		name: '趋势标记',
 		index: '/trend',
 	},
-	/* {
+	{
 		icon: 'Timer',
 		name: '时间选择',
 		index: '/chooseTime',
-	}, */
+	},
 	{
 		icon: 'Bell',
 		name: '消息通知',
 		index: '/notification',
 	},
-	/* {
+	{
 		icon: 'TurnOff',
 		name: '城市选择',
 		index: '/chooseCity',
 	},
 	{
-		icon: 'DArrowRight',
+		icon: 'Operation',
 		name: '进度条',
 		index: '/progress',
 	},
-	{
+	/*{
 		icon: 'ScaleToOriginal',
 		name: '日历',
 		index: '/calendar',
