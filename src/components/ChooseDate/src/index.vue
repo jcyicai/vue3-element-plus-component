@@ -6,7 +6,7 @@
 				type="date"
 				:placeholder="startPlaceholder"
 				:disabled-date="startDisabledDate"
-				v-bind="$attrs.startOptions"
+				v-bind="$attrs.startOptions!"
 			/>
 		</div>
 		<div>
@@ -16,7 +16,7 @@
 				:placeholder="endPlaceholder"
 				:disabled="endDateDisabled"
 				:disabled-date="endDisabledDate"
-				v-bind="$attrs.endOptions"
+				v-bind="$attrs.endOptions!"
 			/>
 		</div>
 	</div>
