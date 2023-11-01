@@ -10,25 +10,27 @@ import ChooseTime from './ChooseTime'
 import ChooseDate from './ChooseDate'
 import ChooseCity from './ChooseCity'
 import Form from './Form'
+import ModalForm from './ModalForm'
 
 const components = [
-	ChooseArea,
-	ChooseIcon,
-	Trend,
-	Notification,
-	NoticeList,
-	Menu,
-	Progress,
-	ChooseTime,
-	ChooseDate,
-	ChooseCity,
-	Form
+  ChooseArea,
+  ChooseIcon,
+  Trend,
+  Notification,
+  NoticeList,
+  Menu,
+  Progress,
+  ChooseTime,
+  ChooseDate,
+  ChooseCity,
+  Form,
+  ModalForm,
 ]
 
 export default {
-	install(app: App) {
-		components.map((item) => {
-			app.use(item)
-		})
-	},
+  install(app: App) {
+    components.map(item => {
+      app.use(item)
+    })
+  },
 }

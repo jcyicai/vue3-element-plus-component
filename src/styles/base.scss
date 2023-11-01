@@ -12,3 +12,23 @@ body,
 .el-menu {
 	height: 100%;
 }
+
+/* 整个滚动条 */
+::-webkit-scrollbar {
+	width: 10px;
+	height: 10px;
+}
+
+::-webkit-scrollbar-button:vertical {
+	display: none;
+}
+
+::-webkit-scrollbar-corner,
+::-webkit-scrollbar-track {
+	background-color: #f4f5f7;
+}
+
+::-webkit-scrollbar-thumb {
+	border-radius: 5px;
+	background-color: #d7dbe5;
+}

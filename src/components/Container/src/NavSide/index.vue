@@ -1,10 +1,5 @@
 <template>
-  <JcMenu
-    :collapse="collapse"
-    :data="data"
-    router
-    :default-active="$route.path"
-  ></JcMenu>
+  <JcMenu :collapse="collapse" :data="data" router :default-active="$route.path"></JcMenu>
 </template>
 
 <script lang="ts" setup>
@@ -62,6 +57,11 @@ const data = [
     icon: 'Tickets',
     name: '表单',
     index: '/form',
+  },
+  {
+    icon: 'ChatLineSquare',
+    name: '弹出框表单',
+    index: '/modalForm',
   },
   /*{
 		icon: 'Grid',

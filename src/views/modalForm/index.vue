@@ -1,16 +1,14 @@
 <template>
   <div>
-    <JcForm
-      ref="form"
-      label-width="100px"
+    <el-button type="primary" @click="handleClick">open</el-button>
+    <ModalForm
+      v-model:visible="visible"
+      width="50%"
+      title="编辑用户"
       :options="options"
-      @on-change="handleChange"
-      @before-upload="handleBeforeUpload"
-      @on-preview="handlePreview"
-      @on-remove="handleRemove"
-      @before-remove="beforeRemove"
-      @on-exceed="handleExceed"
-      @on-success="handleSuccess"
+      :on-change="handleChange"
+      :on-success="handleSuccess"
+      isScroll
     >
       <template #uploadArea>
         <el-button type="primary">Click to upload</el-button>
@@ -18,24 +16,20 @@
       <template #uploadTip>
         <div style="font-size: 12px; color: #ccc">jpg/png files with a size less than 500KB.</div>
       </template>
-      <template #action="scope">
-        <el-button type="primary" @click="submitForm(scope)">提交</el-button>
-        <el-button @click="resetForm">重置</el-button>
+      <template #footer="{ form }">
+        <el-button @click="handleCancel(form)">取消</el-button>
+        <el-button type="primary" @click="handleConfirm(form)">确认</el-button>
       </template>
-    </JcForm>
+    </ModalForm>
   </div>
 </template>
 
 <script lang="ts" setup>
+import { ref } from 'vue'
 import { FormOptions } from '@/components/Form/src/types/types.ts'
 import { ElMessage, ElMessageBox, FormInstance } from 'element-plus'
-import { ref } from 'vue'
 
-interface Scope {
-  form: FormInstance
-  model: any
-}
-
+const visible = ref<boolean>(false)
 const options: FormOptions[] = [
   {
     type: 'input',
@@ -214,45 +208,27 @@ const options: FormOptions[] = [
   },
 ]
 
-const form = ref()
+const handleClick = () => {
+  visible.value = true
+}
 
-const submitForm = (scope: Scope) => {
-  scope.form.validate(valid => {
+const handleCancel = (form: FormInstance) => {
+  form.resetFields()
+  visible.value = false
+}
+
+const handleConfirm = (form: FormInstance) => {
+  const validate = form.validate()
+  const formData = form.getFormData()
+  validate((valid: any) => {
     if (valid) {
-      console.log(scope.model)
-      ElMessage.success('提交成功')
+      console.log(formData)
+      ElMessage.success('验证成功')
+      visible.value = false
     } else {
-      ElMessage.error('表单填写有误，请检查')
+      ElMessage.error('验证失败')
     }
   })
-}
-
-// 重置表单
-const resetForm = () => {
-  form.value.resetFields()
-}
-
-const handleRemove = (val: any) => {
-  console.log('remove')
-  console.log(val)
-}
-
-const handlePreview = (val: any) => {
-  console.log('preview')
-  console.log(val)
-}
-
-const handleExceed = (val: any) => {
-  console.log('exceed')
-  console.log(val)
-}
-
-const beforeRemove = (val: any) => {
-  console.log('beforeRemove')
-  return ElMessageBox.confirm(`Cancel the transfer of ${val.uploadFile.name} ?`).then(
-    () => true,
-    () => false
-  )
 }
 
 const handleSuccess = (val: any) => {
@@ -262,11 +238,6 @@ const handleSuccess = (val: any) => {
 
 const handleChange = (val: any) => {
   console.log('on-change')
-  console.log(val)
-}
-
-const handleBeforeUpload = (val: any) => {
-  console.log('before-upload')
   console.log(val)
 }
 </script>

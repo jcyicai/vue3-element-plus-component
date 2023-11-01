@@ -1,6 +1,11 @@
 import { RuleItem } from './rule'
 import { CSSProperties } from 'vue'
 
+/* import { ValidateFieldsError } from 'async-validator'
+interface Callback {
+  (isValid?: boolean, invalidFields?: ValidateFieldsError): void
+} */
+
 // 表单配置选项
 export interface FormOptions {
   // 表单项显示的元素
@@ -25,6 +30,7 @@ export interface FormOptions {
     | 'time-select'
     | 'transfer'
     | 'upload'
+    | 'editor'
   // 表单项值
   value?: any
   // 表单项label
@@ -68,7 +74,7 @@ export interface FormOptions {
   }
 }
 
-export interface ValidateFieldCallback {
+/* export interface ValidateFieldCallback {
   (message?: string, invalidFields?: ValidateFieldsError): void
 }
 
@@ -92,4 +98,4 @@ export interface FormInstance {
   resetFields: () => void
   clearValidate: (props?: string | string[]) => void
   validateField: (props: string | string[], cb: ValidateFieldCallback) => void
-}
+} */
