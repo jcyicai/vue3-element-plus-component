@@ -63,11 +63,11 @@ const data = [
     name: '弹出框表单',
     index: '/modalForm',
   },
-  /*{
-		icon: 'Grid',
-		name: '表格',
-		index: '/table',
-	}, */
+  {
+    icon: 'Grid',
+    name: '表格',
+    index: '/table',
+  },
   {
     icon: 'Menu',
     name: '导航菜单',
