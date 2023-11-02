@@ -11,6 +11,7 @@
   "dependencies": {
     "@element-plus/icons-vue": "^2.1.0",
     "@types/lodash": "^4.14.200",
+    "axios": "^1.6.0",
     "element-plus": "^2.4.0",
     "lodash": "^4.17.21",
     "vue": "^3.3.4",
@@ -18,8 +19,10 @@
     "wangeditor": "^4.7.9"
   },
   "devDependencies": {
+    "@types/mockjs": "^1.0.9",
     "@vitejs/plugin-vue": "^4.2.3",
     "@vitejs/plugin-vue-jsx": "^3.0.2",
+    "mockjs": "^1.1.0",
     "sass": "^1.69.3",
     "sass-loader": "^13.3.2",
     "typescript": "^5.0.2",

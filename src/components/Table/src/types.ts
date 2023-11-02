@@ -7,6 +7,10 @@ export interface TableOptions {
   width?: string | number
   // 对齐方式
   align?: 'left' | 'center' | 'right'
-  // 自定义列模板名称
+  // 自定义列模板名称 插槽名称
   slot?: string
+  // 是否操作列
+  action?: boolean
+  // 是否可编辑单元格
+  editable?: boolean
 }
