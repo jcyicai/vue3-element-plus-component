@@ -48,11 +48,11 @@ const data = [
     name: '进度条',
     index: '/progress',
   },
-  /*{
-		icon: 'ScaleToOriginal',
-		name: '日历',
-		index: '/calendar',
-	},*/
+  {
+    icon: 'ScaleToOriginal',
+    name: '日历',
+    index: '/calendar',
+  },
   {
     icon: 'Tickets',
     name: '表单',
