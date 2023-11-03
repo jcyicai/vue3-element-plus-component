@@ -12,7 +12,7 @@ import { EventClickArg, EventContentArg } from '@fullcalendar/core'
 import daygrid from '@fullcalendar/daygrid'
 import interaction, { DateClickArg } from '@fullcalendar/interaction'
 import zhCnLocale from '@fullcalendar/core/locales/zh-cn'
-import { EventItem } from './types.ts'
+import { EventItem } from './types'
 import { onMounted, ref, computed } from 'vue'
 
 interface calendarProps {

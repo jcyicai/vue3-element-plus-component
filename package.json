@@ -5,8 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vue-tsc && vite build",
-    "preview": "vite preview"
+    "build": "vite build",
+    "preview": "vite preview",
+    "build:components": "node ./command/build.js",
+    "lib": "npm run build:components"
   },
   "dependencies": {
     "@element-plus/icons-vue": "^2.1.0",

@@ -1,5 +1,6 @@
 import { RuleItem } from './rule'
 import { CSSProperties } from 'vue'
+import { FormInstance as ElFormInstance } from 'element-plus'
 
 /* import { ValidateFieldsError } from 'async-validator'
 interface Callback {
@@ -74,6 +75,10 @@ export interface FormOptions {
   }
 }
 
+export interface FormInstance extends ElFormInstance {
+  getData: () => void
+}
+
 /* export interface ValidateFieldCallback {
   (message?: string, invalidFields?: ValidateFieldsError): void
 }
@@ -98,4 +103,5 @@ export interface FormInstance {
   resetFields: () => void
   clearValidate: (props?: string | string[]) => void
   validateField: (props: string | string[], cb: ValidateFieldCallback) => void
+  getData: () => void
 } */

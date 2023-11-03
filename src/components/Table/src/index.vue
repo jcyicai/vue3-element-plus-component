@@ -79,7 +79,7 @@
 </template>
 
 <script lang="ts" setup>
-import { TableOptions } from './types.ts'
+import { TableOptions } from './types'
 import { ref, computed, onMounted, watch } from 'vue'
 import cloneDeep from 'lodash/cloneDeep'
 

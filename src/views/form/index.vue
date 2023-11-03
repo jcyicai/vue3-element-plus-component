@@ -27,8 +27,8 @@
 </template>
 
 <script lang="ts" setup>
-import { FormOptions } from '@/components/Form/src/types/types.ts'
-import { ElMessage, ElMessageBox, FormInstance } from 'element-plus'
+import { FormOptions, FormInstance } from '@/components/Form/src/types/types'
+import { ElMessage, ElMessageBox } from 'element-plus'
 import { ref } from 'vue'
 
 interface Scope {

@@ -26,8 +26,8 @@
 
 <script lang="ts" setup>
 import { ref } from 'vue'
-import { FormOptions } from '@/components/Form/src/types/types.ts'
-import { ElMessage, ElMessageBox, FormInstance } from 'element-plus'
+import { FormOptions, FormInstance } from '@/components/Form/src/types/types'
+import { ElMessage } from 'element-plus'
 
 const visible = ref<boolean>(false)
 const options: FormOptions[] = [
@@ -217,18 +217,18 @@ const handleCancel = (form: FormInstance) => {
   visible.value = false
 }
 
-const handleConfirm = (form: FormInstance) => {
-  const validate = form.validate()
-  const formData = form.getFormData()
-  validate((valid: any) => {
-    if (valid) {
-      console.log(formData)
-      ElMessage.success('验证成功')
-      visible.value = false
-    } else {
-      ElMessage.error('验证失败')
-    }
-  })
+const handleConfirm = async (form: FormInstance) => {
+  const valid = await form.validate()
+  const formData = form.getData()
+  //validate((valid: any) => {
+  if (valid) {
+    console.log(formData)
+    ElMessage.success('验证成功')
+    visible.value = false
+  } else {
+    ElMessage.error('验证失败')
+  }
+  //})
 }
 
 const handleSuccess = (val: any) => {

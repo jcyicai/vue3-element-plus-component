@@ -74,7 +74,7 @@
 import { FormOptions } from './types/types.ts'
 import { ref, onMounted, watch, nextTick } from 'vue'
 import cloneDeep from 'lodash/cloneDeep' // 没有全部引入 减少打包体积
-import { FormInstance } from 'element-plus'
+import { FormInstance } from './types/types'
 import E from 'wangeditor'
 
 interface formProps {
@@ -153,7 +153,7 @@ const resetFields = () => {
 }
 
 // 获取表单数据
-const getFormData = () => {
+const getData = () => {
   return model.value
 }
 
@@ -161,7 +161,7 @@ const getFormData = () => {
 defineExpose({
   resetFields,
   validate,
-  getFormData,
+  getData,
 })
 
 onMounted(() => {

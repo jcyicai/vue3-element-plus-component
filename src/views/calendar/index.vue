@@ -14,7 +14,7 @@
 </template>
 
 <script lang="ts" setup>
-import { EventItem } from '@/components/calendar/src/types.ts'
+import { EventItem } from '@/components/Calendar/src/types'
 import { DateClickArg } from '@fullcalendar/interaction'
 import { EventClickArg, EventContentArg } from '@fullcalendar/core'
 import { ref } from 'vue'

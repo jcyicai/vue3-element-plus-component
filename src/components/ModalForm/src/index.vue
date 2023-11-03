@@ -33,8 +33,7 @@
 
 <script lang="ts" setup>
 import { ref, watch } from 'vue'
-import { FormOptions } from './types/types.ts'
-import { FormInstance } from 'element-plus'
+import { FormOptions, FormInstance } from '../../Form/src/types/types'
 
 interface modalFormProps {
   // 控制弹出框显示/隐藏
