@@ -1,15 +1,19 @@
 <template>
-  <FullCalendar ref="calendar" :options="calendarOptions"></FullCalendar>
+  <FullCalendar ref="calendar" :options="calendarOptions">
+    <template #eventContent="arg">
+      <slot name="eventContent" :arg="arg"></slot>
+    </template>
+  </FullCalendar>
 </template>
 
 <script lang="ts" setup>
 import FullCalendar from '@fullcalendar/vue3'
-//import { EventClickArg, EventContentArg } from '@fullcalendar/core'
+import { EventClickArg, EventContentArg } from '@fullcalendar/core'
 import daygrid from '@fullcalendar/daygrid'
 import interaction, { DateClickArg } from '@fullcalendar/interaction'
 import zhCnLocale from '@fullcalendar/core/locales/zh-cn'
 import { EventItem } from './types.ts'
-import { onMounted, ref } from 'vue'
+import { onMounted, ref, computed } from 'vue'
 
 interface calendarProps {
   // 语言
@@ -24,6 +28,8 @@ interface calendarProps {
   footerToolbar?: object
   // 事件源
   events?: EventItem[]
+  // 日历显示结束时间  日程 就会显示 开始-结束 时间
+  displayEventEnd?: boolean
 }
 
 const props = withDefaults(defineProps<calendarProps>(), {
@@ -50,22 +56,25 @@ const props = withDefaults(defineProps<calendarProps>(), {
   },
   footerToolbar: () => {},
   events: () => [],
+  displayEventEnd: false,
 })
 
-const emits = defineEmits(['date-click'])
+// 分发事件
+const emits = defineEmits(['dateClick', 'eventClick'])
 
 // 日历实例
 const calendar = ref<Calendar>()
 // 日历配置
-const calendarOptions = ref<any>({
-  plugins: [daygrid, interaction],
-  locales: [zhCnLocale],
-  locale: props.locale,
-  initialView: props.initialView,
-  buttonText: props.buttonText,
-  headerToolbar: props.headerToolbar,
-  footerToolbar: props.footerToolbar,
-  eventSources: [
+const calendarOptions = computed(() => {
+  return {
+    plugins: [daygrid, interaction],
+    locales: [zhCnLocale],
+    locale: props.locale,
+    initialView: props.initialView,
+    buttonText: props.buttonText,
+    headerToolbar: props.headerToolbar,
+    footerToolbar: props.footerToolbar,
+    /* eventSources: [
     {
       // 渲染日历的事件
       //events: props.events,
@@ -74,12 +83,21 @@ const calendarOptions = ref<any>({
         else callback([])
       },
     },
-  ],
-  // 点击日历的某一天
-  dateClick(info: DateClickArg) {
-    console.log(info)
-    emits('date-click', info)
-  },
+  ], */
+    events: props.events,
+    // 点击日历的某一天
+    dateClick(info: DateClickArg) {
+      emits('dateClick', info)
+    },
+    // 信息块点击
+    eventClick(info: EventClickArg) {
+      emits('eventClick', info)
+    },
+    displayEventEnd: props.displayEventEnd,
+    eventContent(arg: EventContentArg) {
+      console.log(arg)
+    },
+  }
 })
 
 /* 渲染日历
