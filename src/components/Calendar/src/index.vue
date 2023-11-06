@@ -8,7 +8,7 @@
 
 <script lang="ts" setup>
 import FullCalendar from '@fullcalendar/vue3'
-import { EventClickArg, EventContentArg } from '@fullcalendar/core'
+import { Calendar, EventClickArg, EventContentArg } from '@fullcalendar/core'
 import daygrid from '@fullcalendar/daygrid'
 import interaction, { DateClickArg } from '@fullcalendar/interaction'
 import zhCnLocale from '@fullcalendar/core/locales/zh-cn'
@@ -54,7 +54,9 @@ const props = withDefaults(defineProps<calendarProps>(), {
       end: 'prev today next',
     }
   },
-  footerToolbar: () => {},
+  footerToolbar: () => {
+    return {}
+  },
   events: () => [],
   displayEventEnd: false,
 })
@@ -65,7 +67,7 @@ const emits = defineEmits(['dateClick', 'eventClick'])
 // 日历实例
 const calendar = ref<Calendar>()
 // 日历配置
-const calendarOptions = computed(() => {
+const calendarOptions: any = computed(() => {
   return {
     plugins: [daygrid, interaction],
     locales: [zhCnLocale],

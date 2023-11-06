@@ -8,7 +8,9 @@
     "build": "vite build",
     "preview": "vite preview",
     "build:components": "node ./command/build.js",
-    "lib": "npm run build:components"
+    "lib": "npm run build:components",
+    "build:prod": "vite build --mode production && vue-tsc --noEmit",
+    "tsc": "vue-tsc --noEmit"
   },
   "dependencies": {
     "@element-plus/icons-vue": "^2.1.0",
