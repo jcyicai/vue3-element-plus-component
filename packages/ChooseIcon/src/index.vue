@@ -34,7 +34,7 @@ interface chooseIconProps {
 }
 const props = withDefaults(defineProps<chooseIconProps>(), {
   title: '',
-  visible: false,
+  visible: false
 })
 
 const emits = defineEmits(['update:visible'])

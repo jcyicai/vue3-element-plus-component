@@ -1,18 +1,7 @@
 <template>
-  <el-form
-    v-if="model"
-    ref="form"
-    :validate-on-rule-change="false"
-    v-bind="$attrs"
-    :model="model"
-    :rules="rules"
-  >
+  <el-form v-if="model" ref="form" :validate-on-rule-change="false" v-bind="$attrs" :model="model" :rules="rules">
     <template v-for="(item, index) in options" :key="index">
-      <el-form-item
-        :label="item.label"
-        :prop="item.prop"
-        v-if="!item.children || !item.children!.length"
-      >
+      <el-form-item :label="item.label" :prop="item.prop" v-if="!item.children || !item.children!.length">
         <component
           v-if="item.type !== 'upload' && item.type !== 'editor'"
           v-model="model[item.prop!]"
@@ -42,11 +31,7 @@
         <div id="editor" v-if="item.type === 'editor'"></div>
       </el-form-item>
       <!-- 存在子项 select option -->
-      <el-form-item
-        :label="item.label"
-        :prop="item.prop"
-        v-if="item.children && item.children.length"
-      >
+      <el-form-item :label="item.label" :prop="item.prop" v-if="item.children && item.children.length">
         <component
           v-model="model[item.prop!]"
           v-bind="item.attrs"
@@ -71,19 +56,19 @@
 </template>
 
 <script lang="ts" setup>
-import { FormOptions, FormInstance } from './types/types'
+import type { FormOptions, FormInstance } from './types/types'
 import { ref, onMounted, watch, nextTick } from 'vue'
 import cloneDeep from 'lodash/cloneDeep' // 没有全部引入 减少打包体积
 import E from 'wangeditor'
-import {
+import type {
   UploadFile,
   UploadFiles,
   UploadProgressEvent,
   UploadRawFile,
   UploadRequestHandler,
-  UploadUserFile,
+  UploadUserFile
 } from 'element-plus'
-import { Awaitable } from 'element-plus/es/utils'
+import type { Awaitable } from 'element-plus/es/utils'
 
 interface formProps {
   // 配置
@@ -92,7 +77,7 @@ interface formProps {
 }
 
 const props = withDefaults(defineProps<formProps>(), {
-  options: () => [],
+  options: () => []
 })
 
 const emits = defineEmits([
@@ -104,7 +89,7 @@ const emits = defineEmits([
   'on-change',
   'on-exceed',
   'before-upload',
-  'before-remove',
+  'before-remove'
 ])
 
 const model = ref<any>(null)
@@ -169,7 +154,7 @@ const getData = () => {
 defineExpose({
   resetFields,
   validate,
-  getData,
+  getData
 })
 
 onMounted(() => {
@@ -202,11 +187,7 @@ const onSuccess = (response: any, uploadFile: UploadFile, uploadFiles: UploadFil
 const onError = (error: Error, uploadFile: UploadFile, uploadFiles: UploadFiles) => {
   emits('on-error', { error, uploadFile, uploadFiles })
 }
-const onProgress = (
-  event: UploadProgressEvent,
-  uploadFile: UploadFile,
-  uploadFiles: UploadFiles
-) => {
+const onProgress = (event: UploadProgressEvent, uploadFile: UploadFile, uploadFiles: UploadFiles) => {
   emits('on-progress', { event, uploadFile, uploadFiles })
 }
 const onChange = (uploadFile: UploadFile, uploadFiles: UploadFiles) => {
@@ -218,12 +199,7 @@ const onExceed = (files: File[], uploadFiles: UploadUserFile[]) => {
 const beforeUpload = (rawFile: UploadRawFile) => {
   emits('before-upload', rawFile)
 }
-const beforeRemove = (
-  uploadFile: UploadFile,
-  uploadFiles: UploadFiles
-): Awaitable<boolean> | any => {
+const beforeRemove = (uploadFile: UploadFile, uploadFiles: UploadFiles): Awaitable<boolean> | any => {
   emits('before-remove', { uploadFile, uploadFiles })
 }
 </script>
-
-

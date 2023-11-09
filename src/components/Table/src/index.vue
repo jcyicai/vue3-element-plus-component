@@ -11,16 +11,9 @@
     @row-click="handleRowClick"
   >
     <template v-for="(item, index) in tableOptions" :key="index">
-      <el-table-column
-        :label="item.label"
-        :prop="item.prop"
-        :align="item.align"
-        :width="item.width"
-      >
+      <el-table-column :label="item.label" :prop="item.prop" :align="item.align" :width="item.width">
         <template #default="scope">
-          <template v-if="scope.row.rowEdit">
-            <el-input v-model="scope.row[item.prop!]"
-          /></template>
+          <template v-if="scope.row.rowEdit"> <el-input v-model="scope.row[item.prop!]" /></template>
           <template v-else>
             <template v-if="scope.$index + scope.column.id === currentEdit">
               <div style="display: flex">
@@ -28,12 +21,8 @@
                 <div @click.stop="handleEditCellClick(scope)">
                   <slot name="editCell" v-if="$slots.editCell" :scope="scope"></slot>
                   <div class="icons" v-else>
-                    <el-icon class="check" size="16" @click.stop="handleCheckIconClick(scope)"
-                      ><check
-                    /></el-icon>
-                    <el-icon class="close" size="16" @click.stop="handleCloseIconClick(scope)"
-                      ><close
-                    /></el-icon>
+                    <el-icon class="check" size="16" @click.stop="handleCheckIconClick(scope)"><check /></el-icon>
+                    <el-icon class="close" size="16" @click.stop="handleCloseIconClick(scope)"><close /></el-icon>
                   </div>
                 </div>
               </div>
@@ -41,11 +30,7 @@
             <template v-else>
               <slot v-if="item.slot" :name="item.slot" :scope="scope"></slot>
               <span v-else>{{ scope.row[item.prop!] }}</span>
-              <el-icon
-                size="16"
-                @click.stop="handleEditIconClick(scope)"
-                class="edit-icon"
-                v-if="item.editable"
+              <el-icon size="16" @click.stop="handleEditIconClick(scope)" class="edit-icon" v-if="item.editable"
                 ><component :is="editIcon"></component
               ></el-icon>
             </template>
@@ -53,11 +38,7 @@
         </template>
       </el-table-column>
     </template>
-    <el-table-column
-      :label="actionOptions!.label"
-      :align="actionOptions!.align"
-      :width="actionOptions!.width"
-    >
+    <el-table-column :label="actionOptions!.label" :align="actionOptions!.align" :width="actionOptions!.width">
       <template #default="scope">
         <slot name="editRow" :scope="scope" v-if="scope.row.rowEdit"></slot>
         <slot name="action" :scope="scope" v-else></slot>
@@ -79,7 +60,7 @@
 </template>
 
 <script lang="ts" setup>
-import { TableOptions } from './types'
+import type { TableOptions } from './types'
 import { ref, computed, onMounted, watch } from 'vue'
 import cloneDeep from 'lodash/cloneDeep'
 
@@ -137,17 +118,11 @@ const props = withDefaults(defineProps<TableProps>(), {
   total: 0,
   pageSizes: () => [10, 20, 30, 40, 50, 100],
   pagination: false,
-  paginationAlign: 'right',
+  paginationAlign: 'right'
 })
 
 // 分发事件
-const emits = defineEmits([
-  'confirm',
-  'cancel',
-  'update:editRowIndex',
-  'size-change',
-  'current-change',
-])
+const emits = defineEmits(['confirm', 'cancel', 'update:editRowIndex', 'size-change', 'current-change'])
 
 // 当前点击单元格
 const currentEdit = ref<string>('')

@@ -1,4 +1,4 @@
-import path from 'path';
+import path from 'path'
 import { defineConfig, build } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
@@ -13,17 +13,16 @@ const outputDir = path.resolve(__dirname, '../lib')
 const baseConfig = defineConfig({
   configFile: false,
   publicDir: false,
-  plugins: [vue(), vueJsx()],
-});
+  plugins: [vue(), vueJsx()]
+})
 
 const rollupOptions = {
   external: ['vue', 'vue-router'],
   output: {
     globals: {
-      vue: 'Vue',
-    },
-  },
-  minify: 'terser',
+      vue: 'Vue'
+    }
+  }
 }
 
 //全量构建
@@ -37,16 +36,17 @@ const buildAll = async () => {
           entry: path.resolve(entryDir, 'index.ts'),
           name: 'index',
           fileName: 'index',
-          formats: ['es', 'umd'],
+          formats: ['es', 'umd']
         },
-        outDir: outputDir,
-      },
+        outDir: outputDir
+      }
     })
-  );
+  )
 }
+
 // 打包成库
 const buildLib = async () => {
-  await buildAll();
+  await buildAll()
 }
 
 buildLib()

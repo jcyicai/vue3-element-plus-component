@@ -1,11 +1,6 @@
 <template>
   <div>
-    <JcCalendar
-      :events="events"
-      displayEventEnd
-      @dateClick="handleDateClick"
-      @eventClick="handleEventClick"
-    >
+    <JcCalendar :events="events" displayEventEnd @dateClick="handleDateClick" @eventClick="handleEventClick">
       <template #eventContent="{ arg }">
         <div v-html="renderEventContent(arg)"></div>
       </template>
@@ -14,9 +9,9 @@
 </template>
 
 <script lang="ts" setup>
-import { EventItem } from '@/components/Calendar/src/types'
-import { DateClickArg } from '@fullcalendar/interaction'
-import { EventClickArg, EventContentArg } from '@fullcalendar/core'
+import type { EventItem } from '@/components/Calendar/src/types'
+import type { DateClickArg } from '@fullcalendar/interaction'
+import type { EventClickArg, EventContentArg } from '@fullcalendar/core'
 import { ref } from 'vue'
 
 const events = ref<EventItem[]>([
@@ -24,13 +19,13 @@ const events = ref<EventItem[]>([
     title: '购物',
     start: '2023-11-11 08:00',
     end: '2023-11-11 12:00',
-    editable: true,
+    editable: true
   },
   {
     title: '代码',
     start: '2023-11-12 10:00',
-    end: '2023-11-12 16:00',
-  },
+    end: '2023-11-12 16:00'
+  }
 ])
 
 // 日期点击
@@ -38,7 +33,7 @@ const handleDateClick = (info: DateClickArg) => {
   events.value.push({
     start: info.dateStr + ' 12:00',
     end: info.dateStr + ' 18:00',
-    title: '学习',
+    title: '学习'
   })
 }
 
@@ -60,5 +55,3 @@ const renderEventContent = (arg: EventContentArg) => {
         `
 }
 </script>
-
-

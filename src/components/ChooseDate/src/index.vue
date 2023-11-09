@@ -36,7 +36,7 @@ interface chooseTimeProps {
 const props = withDefaults(defineProps<chooseTimeProps>(), {
   startPlaceholder: '请选择开始日期',
   endPlaceholder: '请选择结束日期',
-  disableToday: true,
+  disableToday: true
 })
 
 const emits = defineEmits(['startChange', 'endChange'])
@@ -85,5 +85,3 @@ watch(
   }
 )
 </script>
-
-

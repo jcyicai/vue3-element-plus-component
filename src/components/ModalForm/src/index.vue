@@ -33,7 +33,7 @@
 
 <script lang="ts" setup>
 import { ref, watch } from 'vue'
-import { FormOptions, FormInstance } from '../../Form/src/types/types'
+import type { FormOptions, FormInstance } from '../../Form/src/types/types'
 
 interface modalFormProps {
   // 控制弹出框显示/隐藏
@@ -56,7 +56,7 @@ interface modalFormProps {
 const props = withDefaults(defineProps<modalFormProps>(), {
   visible: false,
   options: () => [],
-  isScroll: false,
+  isScroll: false
 })
 
 const emits = defineEmits(['update:visible'])
@@ -81,5 +81,3 @@ watch(
   }
 )
 </script>
-
-

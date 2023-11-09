@@ -8,11 +8,11 @@
 
 <script lang="ts" setup>
 import FullCalendar from '@fullcalendar/vue3'
-import { EventClickArg, EventContentArg } from '@fullcalendar/core'
+import type { Calendar, EventClickArg, EventContentArg } from '@fullcalendar/core'
 import daygrid from '@fullcalendar/daygrid'
-import interaction, { DateClickArg } from '@fullcalendar/interaction'
+import interaction, { type DateClickArg } from '@fullcalendar/interaction'
 import zhCnLocale from '@fullcalendar/core/locales/zh-cn'
-import { EventItem } from './types'
+import type { EventItem } from './types'
 import { onMounted, ref, computed } from 'vue'
 
 interface calendarProps {
@@ -44,19 +44,21 @@ const props = withDefaults(defineProps<calendarProps>(), {
       prevYear: '上一年',
       nextYear: '下一年',
       prev: '上一月',
-      next: '下一月',
+      next: '下一月'
     }
   },
   headerToolbar: () => {
     return {
       start: 'title',
       center: '',
-      end: 'prev today next',
+      end: 'prev today next'
     }
   },
-  footerToolbar: () => {},
+  footerToolbar: () => {
+    return {}
+  },
   events: () => [],
-  displayEventEnd: false,
+  displayEventEnd: false
 })
 
 // 分发事件
@@ -65,7 +67,7 @@ const emits = defineEmits(['dateClick', 'eventClick'])
 // 日历实例
 const calendar = ref<Calendar>()
 // 日历配置
-const calendarOptions = computed(() => {
+const calendarOptions: any = computed(() => {
   return {
     plugins: [daygrid, interaction],
     locales: [zhCnLocale],
@@ -96,7 +98,7 @@ const calendarOptions = computed(() => {
     displayEventEnd: props.displayEventEnd,
     eventContent(arg: EventContentArg) {
       console.log(arg)
-    },
+    }
   }
 })
 
@@ -121,5 +123,3 @@ onMounted(() => {
   //renderCalendar()
 })
 </script>
-
-

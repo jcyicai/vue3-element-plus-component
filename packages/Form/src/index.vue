@@ -1,18 +1,7 @@
 <template>
-  <el-form
-    v-if="model"
-    ref="form"
-    :validate-on-rule-change="false"
-    v-bind="$attrs"
-    :model="model"
-    :rules="rules"
-  >
+  <el-form v-if="model" ref="form" :validate-on-rule-change="false" v-bind="$attrs" :model="model" :rules="rules">
     <template v-for="(item, index) in options" :key="index">
-      <el-form-item
-        :label="item.label"
-        :prop="item.prop"
-        v-if="!item.children || !item.children!.length"
-      >
+      <el-form-item :label="item.label" :prop="item.prop" v-if="!item.children || !item.children!.length">
         <component
           v-if="item.type !== 'upload' && item.type !== 'editor'"
           v-model="model[item.prop!]"
@@ -42,11 +31,7 @@
         <div id="editor" v-if="item.type === 'editor'"></div>
       </el-form-item>
       <!-- 存在子项 select option -->
-      <el-form-item
-        :label="item.label"
-        :prop="item.prop"
-        v-if="item.children && item.children.length"
-      >
+      <el-form-item :label="item.label" :prop="item.prop" v-if="item.children && item.children.length">
         <component
           v-model="model[item.prop!]"
           v-bind="item.attrs"
@@ -71,19 +56,28 @@
 </template>
 
 <script lang="ts" setup>
-import { FormOptions, FormInstance } from './types/types'
+import type { FormOptions, FormInstance } from './types/types'
 import { ref, onMounted, watch, nextTick } from 'vue'
 import cloneDeep from 'lodash/cloneDeep' // 没有全部引入 减少打包体积
 import E from 'wangeditor'
+import type {
+  UploadFile,
+  UploadFiles,
+  UploadProgressEvent,
+  UploadRawFile,
+  UploadRequestHandler,
+  UploadUserFile
+} from 'element-plus'
+import type { Awaitable } from 'element-plus/es/utils'
 
 interface formProps {
   // 配置
   options: FormOptions[]
-  httpRequest?: () => void
+  httpRequest?: UploadRequestHandler | undefined
 }
 
 const props = withDefaults(defineProps<formProps>(), {
-  options: () => [],
+  options: () => []
 })
 
 const emits = defineEmits([
@@ -95,7 +89,7 @@ const emits = defineEmits([
   'on-change',
   'on-exceed',
   'before-upload',
-  'before-remove',
+  'before-remove'
 ])
 
 const model = ref<any>(null)
@@ -160,7 +154,7 @@ const getData = () => {
 defineExpose({
   resetFields,
   validate,
-  getData,
+  getData
 })
 
 onMounted(() => {
@@ -177,37 +171,35 @@ watch(
 )
 
 // 上传方法
-const onPreview = (file: File) => {
-  emits('on-preview', file)
+const onPreview = (uploadFile: UploadFile) => {
+  emits('on-preview', uploadFile)
 }
-const onRemove = (file: File, fileList: FileList) => {
-  emits('on-remove', { file, fileList })
+const onRemove = (uploadFile: UploadFile, uploadFiles: UploadFiles) => {
+  emits('on-remove', { uploadFile, uploadFiles })
 }
-const onSuccess = (response: any, file: File, fileList: FileList) => {
+const onSuccess = (response: any, uploadFile: UploadFile, uploadFiles: UploadFiles) => {
   // 上传成功，给表单项赋值
   const uploadItem = props.options.find(item => item.type === 'upload')!
-  model.value[uploadItem.prop!] = { response, file, fileList }
+  model.value[uploadItem.prop!] = { response, uploadFile, uploadFiles }
 
-  emits('on-success', { response, file, fileList })
+  emits('on-success', { response, uploadFile, uploadFiles })
 }
-const onError = (error: any, file: File, fileList: FileList) => {
-  emits('on-error', { error, file, fileList })
+const onError = (error: Error, uploadFile: UploadFile, uploadFiles: UploadFiles) => {
+  emits('on-error', { error, uploadFile, uploadFiles })
 }
-const onProgress = (event: any, file: File, fileList: FileList) => {
-  emits('on-progress', { event, file, fileList })
+const onProgress = (event: UploadProgressEvent, uploadFile: UploadFile, uploadFiles: UploadFiles) => {
+  emits('on-progress', { event, uploadFile, uploadFiles })
 }
-const onChange = (file: File, fileList: FileList) => {
-  emits('on-change', { file, fileList })
+const onChange = (uploadFile: UploadFile, uploadFiles: UploadFiles) => {
+  emits('on-change', { uploadFile, uploadFiles })
 }
-const onExceed = (files: File[], fileList: FileList) => {
-  emits('on-exceed', { files, fileList })
+const onExceed = (files: File[], uploadFiles: UploadUserFile[]) => {
+  emits('on-exceed', { files, uploadFiles })
 }
-const beforeUpload = (file: File) => {
-  emits('before-upload', file)
+const beforeUpload = (rawFile: UploadRawFile) => {
+  emits('before-upload', rawFile)
 }
-const beforeRemove = (file: File, fileList: FileList) => {
-  emits('before-remove', { file, fileList })
+const beforeRemove = (uploadFile: UploadFile, uploadFiles: UploadFiles): Awaitable<boolean> | any => {
+  emits('before-remove', { uploadFile, uploadFiles })
 }
 </script>
-
-

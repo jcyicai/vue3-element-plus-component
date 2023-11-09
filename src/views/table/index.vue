@@ -53,7 +53,7 @@
 </template>
 
 <script lang="ts" setup>
-import { TableOptions } from '@/components/Table/src/types'
+import type { TableOptions } from '@/components/Table/src/types'
 import { ref, onMounted } from 'vue'
 import axios from 'axios'
 
@@ -74,25 +74,25 @@ const options: TableOptions[] = [
     prop: 'date',
     align: 'center',
     slot: 'date',
-    editable: true,
+    editable: true
   },
   {
     label: '姓名',
     prop: 'name',
     align: 'center',
-    slot: 'name',
+    slot: 'name'
   },
   {
     label: '地址',
     prop: 'address',
     align: 'center',
-    editable: true,
+    editable: true
   },
   {
     label: '操作',
     align: 'center',
-    action: true,
-  },
+    action: true
+  }
 ]
 // 表格数据
 const tableData = ref<any[]>([])
@@ -113,7 +113,7 @@ const getTableData = () => {
   axios
     .post('/api/list', {
       current: currentPage.value,
-      pageSize: pageSize.value,
+      pageSize: pageSize.value
     })
     .then((res: any) => {
       tableData.value = res.data.data.rows
@@ -160,5 +160,3 @@ const handleCancel = (scope: any) => {
   console.log(scope)
 }
 </script>
-
-

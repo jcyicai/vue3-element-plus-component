@@ -14,7 +14,7 @@ for (let i = 0; i < 100; i++) {
   const template = {
     date: Random.date(), // 生成一个随机日期,可加参数定义日期格式
     name: Random.name(), // 生成姓名
-    address: Random.province(), // 生成地址
+    address: Random.province() // 生成地址
   }
   dataList.push(template)
 }
@@ -35,7 +35,7 @@ Mock.mock('/api/list', 'post', (params: any) => {
       pageSize: size,
       rows: newDataList,
       total: total,
-      totalPages: totalPages,
-    },
+      totalPages: totalPages
+    }
   }
 })

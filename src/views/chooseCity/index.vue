@@ -1,19 +1,17 @@
 <template>
-	<div>
-		<ChooseCity @changeCity="handleCityChange" @changeProvince="handleProvinceChange"></ChooseCity>
-	</div>
+  <div>
+    <ChooseCity @changeCity="handleCityChange" @changeProvince="handleProvinceChange"></ChooseCity>
+  </div>
 </template>
 
 <script lang="ts" setup>
-import { CityItem } from '@/components/ChooseCity/src/types'
+import type { CityItem } from '@/components/ChooseCity/src/types'
 
 const handleCityChange = (item: CityItem) => {
-	console.log(item)
+  console.log(item)
 }
 
 const handleProvinceChange = (item: string) => {
-	console.log(item)
+  console.log(item)
 }
 </script>
-
-

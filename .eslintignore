@@ -1,0 +1,15 @@
+dist
+node_modules
+public
+docs
+.husky
+.local
+bin
+src/mock/*
+.gitignore
+.vscode
+.idea
+*.sh
+*.md
+*.woff
+*.ttf

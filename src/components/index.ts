@@ -28,7 +28,7 @@ const components = [
   Form,
   ModalForm,
   Table,
-  Calendar,
+  Calendar
 ]
 
 export default {
@@ -36,5 +36,5 @@ export default {
     components.map(item => {
       app.use(item)
     })
-  },
+  }
 }

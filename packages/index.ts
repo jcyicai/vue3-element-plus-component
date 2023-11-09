@@ -13,8 +13,6 @@ import Form from './Form'
 import ModalForm from './ModalForm'
 import Table from './Table'
 import Calendar from './Calendar'
-import './styles/base.scss'
-import './styles/ui.scss'
 
 const components = [
   ChooseArea,
@@ -30,7 +28,7 @@ const components = [
   Form,
   ModalForm,
   Table,
-  Calendar,
+  Calendar
 ]
 
 export default {
@@ -38,5 +36,5 @@ export default {
     components.map(item => {
       app.use(item)
     })
-  },
+  }
 }

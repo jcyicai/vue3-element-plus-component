@@ -1,13 +1,11 @@
 <template>
-	<div>
-		<ChooseArea @change="handleAreaChange"></ChooseArea>
-	</div>
+  <div>
+    <ChooseArea @change="handleAreaChange"></ChooseArea>
+  </div>
 </template>
 
 <script lang="ts" setup>
 const handleAreaChange = (val: any) => {
-	console.log(val)
+  console.log(val)
 }
 </script>
-
-

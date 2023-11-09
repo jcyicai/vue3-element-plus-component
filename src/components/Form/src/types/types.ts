@@ -1,6 +1,6 @@
-import { RuleItem } from './rule'
-import { CSSProperties } from 'vue'
-import { FormInstance as ElFormInstance } from 'element-plus'
+import type { RuleItem } from './rule'
+import type { CSSProperties } from 'vue'
+import type { FormInstance as ElFormInstance } from 'element-plus'
 
 /* import { ValidateFieldsError } from 'async-validator'
 interface Callback {
