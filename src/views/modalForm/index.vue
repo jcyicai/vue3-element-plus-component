@@ -242,4 +242,4 @@ const handleChange = (val: any) => {
 }
 </script>
 
-<style lang="scss" scoped></style>
+

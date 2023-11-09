@@ -210,4 +210,4 @@ const beforeRemove = (file: File, fileList: FileList) => {
 }
 </script>
 
-<style lang="scss" scoped></style>
+

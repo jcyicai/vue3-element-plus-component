@@ -1,4 +1,4 @@
-import { App } from 'vue'
+import type { App } from 'vue'
 import Menu from './src/index.vue'
 import RecurMenu from './src/menu'
 

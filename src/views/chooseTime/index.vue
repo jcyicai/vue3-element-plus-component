@@ -47,4 +47,4 @@ const handleEndDateChange = (val: EndDateValue) => {
 }
 </script>
 
-<style lang="scss" scoped></style>
+

@@ -226,4 +226,4 @@ const beforeRemove = (
 }
 </script>
 
-<style lang="scss" scoped></style>
+

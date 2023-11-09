@@ -16,4 +16,4 @@ const handleProvinceChange = (item: string) => {
 }
 </script>
 
-<style lang="scss" scoped></style>
+

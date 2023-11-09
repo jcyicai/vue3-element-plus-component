@@ -44,7 +44,7 @@ const handleDateClick = (info: DateClickArg) => {
 
 // 日程事件点击
 const handleEventClick = (info: EventClickArg) => {
-  //console.log(info)
+  console.log(info)
 }
 
 // 日程内容自定义
@@ -61,4 +61,4 @@ const renderEventContent = (arg: EventContentArg) => {
 }
 </script>
 
-<style lang="scss" scoped></style>
+
