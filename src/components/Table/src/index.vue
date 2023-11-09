@@ -83,7 +83,7 @@ import { TableOptions } from './types'
 import { ref, computed, onMounted, watch } from 'vue'
 import cloneDeep from 'lodash/cloneDeep'
 
-interface tableProps {
+interface TableProps {
   // 表格配置
   options: TableOptions[]
   // 表格数据
@@ -120,7 +120,7 @@ interface tableProps {
   pageSizes?: number[]
 }
 
-const props = withDefaults(defineProps<tableProps>(), {
+const props = withDefaults(defineProps<TableProps>(), {
   options: () => [],
   data: () => [],
   loading: false,

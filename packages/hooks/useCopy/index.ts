@@ -2,7 +2,7 @@ import { ElMessage } from 'element-plus'
 // 功能： 复制
 export const useCopy = (text: string) => {
 	// 创建输入框
-	let input = document.createElement('input')
+	const input = document.createElement('input')
 	// 给输入框 value 赋值
 	input.value = text
 	// 追加到 body 里面去

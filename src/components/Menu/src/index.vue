@@ -20,7 +20,7 @@
 </template>
 
 <script lang="ts" setup>
-interface menuProps {
+interface MenuProps {
 	// 菜单数据
 	data: any[]
 	// 默认选中菜单
@@ -36,7 +36,7 @@ interface menuProps {
 	// 菜单子菜单的键名
 	children?: string
 }
-const props = withDefaults(defineProps<menuProps>(), {
+const props = withDefaults(defineProps<MenuProps>(), {
 	data: () => [],
 	defaultActive: '',
 	router: false,

@@ -27,4 +27,4 @@ const props = withDefaults(defineProps<notificationProps>(), {
 })
 </script>
 
-<style lang="scss" scoped></style>
+

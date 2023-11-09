@@ -1,4 +1,4 @@
-import { App } from 'vue'
+import type { App } from 'vue'
 import ChooseArea from './ChooseArea'
 import ChooseIcon from './ChooseIcon'
 import Trend from './Trend'

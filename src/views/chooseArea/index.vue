@@ -10,4 +10,4 @@ const handleAreaChange = (val: any) => {
 }
 </script>
 
-<style lang="scss" scoped></style>
+

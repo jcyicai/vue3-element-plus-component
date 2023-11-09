@@ -80,4 +80,4 @@ const data1 = [
 ]
 </script>
 
-<style lang="scss" scoped></style>
+
