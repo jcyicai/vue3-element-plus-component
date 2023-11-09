@@ -5,7 +5,7 @@
   "compilerOptions": {
     "composite": true,
     "baseUrl": ".",
-    "allowImportingTsExtensions": true,
+    //"allowImportingTsExtensions": true,
     "paths": {
       "@": ["src"],
       "@/*": ["src/*"]
