@@ -35,7 +35,7 @@
 </p>
 
 <p align="center">
-  <img src="http://resource.cycblog.cn/image/github/vue3-component/select-city.png">
+  <img src="http://resource.cycblog.cn/image/github/vue3-component/progress.png">
 </p>
 
 <p align="center">
